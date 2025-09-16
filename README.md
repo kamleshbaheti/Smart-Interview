@@ -90,24 +90,10 @@ This project implements a full-stack remote proctoring solution with **real-time
 ### Backend Setup
 1.  Clone the repository:
     ```bash
-    git clone [https://github.com/your-repo/proctoring-system.git](https://github.com/your-repo/proctoring-system.git)
-    cd proctoring-system/backend
+    git clone [[https://github.com/kamleshbaheti/Smart-Interview](https://github.com/kamleshbaheti/Smart-Interview)]
+    cd Smart-Interview/backend
     ```
-2.  Create and activate a virtual environment:
-    ```bash
-    # For Linux / macOS
-    python3 -m venv venv
-    source venv/bin/activate
-
-    # For Windows
-    python -m venv venv
-    venv\Scripts\activate
-    ```
-3.  Install the required dependencies:
-    ```bash
-    pip install -r requirements.txt
-    ```
-4.  Start the backend server:
+2.  Start the backend server:
     ```bash
     python app.py
     ```
