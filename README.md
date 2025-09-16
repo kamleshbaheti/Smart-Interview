@@ -180,6 +180,23 @@ Each session generates a comprehensive PDF report that includes:
 
 ---
 
+## User Interface
+
+### Interviewee View
+![Interviewee View](./backend/screenshots/interviewee-side.jpg)
+
+### Interviewer View
+![Interviewer View](./backend/screenshots/interviewer-side.jpg)
+
+### Home
+![Live Events](./backend/screenshots/home.jpg)
+
+### Join A Interview
+![Report Sample](./backend/screenshots/join.jpg)
+
+
+---
+
 ## License
 
 This project is intended for educational and demonstration purposes. All pre-trained models used (e.g., MediaPipe, MobileNetSSD) are subject to their respective licenses.
