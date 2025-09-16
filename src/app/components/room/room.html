@@ -1,0 +1,123 @@
+<!-- src/app/components/room/room.html -->
+<div class="interview-room-container">
+  <div class="room-header">
+    <h3>
+      <i class="material-icons">videocam</i>
+      Room: <strong>{{sessionId}}</strong>
+    </h3>
+    <div class="user-info">
+      <span class="role-badge {{role}}">{{ role === 'interviewer' ? role : name }}</span>
+    </div>
+  </div>
+
+  <!-- Loading overlay -->
+  <div class="room-container" [class.loading]="isLoading">
+    <div *ngIf="isLoading" class="loading-overlay">
+      <div class="spinner">
+        <p>Joining session…</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Error overlay -->
+  <div class="error-overlay" *ngIf="errorMessage">
+    <p>{{ errorMessage }}</p>
+  </div>
+
+  <!-- Main layout: show only when loaded and no error -->
+  <div class="main-layout" *ngIf="!isLoading && !errorMessage">
+    <div class="video-panel">
+      <div class="video-wrapper">
+        <!-- Interviewee: local live preview -->
+        <div *ngIf="role === 'interviewee'" class="video-container">
+          <video #videoElement autoplay playsinline muted></video>
+          <canvas #canvasElement class="overlay"></canvas>
+          <div *ngIf="isRecording" class="recording-indicator">
+            <span class="pulsating-dot"></span> RECORDING
+          </div>
+        </div>
+
+        <!-- Interviewer: receives snapshots (image element updated via socket) -->
+        <div *ngIf="role === 'interviewer'" class="video-container">
+          <img #snapshotImage style="height: 80vh !important; width: 100% !important;" class="video-feed" />
+          <canvas #canvasElement class="overlay"></canvas>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <div class="video-controls">
+        <!-- Interviewee controls -->
+        <ng-container *ngIf="role === 'interviewee'">
+          <button (click)="toggleMute()">
+            <i class="material-icons">{{ isMuted ? 'mic_off' : 'mic' }}</i>
+            {{ isMuted ? 'Unmute' : 'Mute' }}
+          </button>
+          <button (click)="toggleCamera()">
+            <i class="material-icons">{{ cameraOff ? 'videocam' : 'videocam_off' }}</i>
+            {{ cameraOff ? 'Turn Camera On' : 'Turn Camera Off' }}
+          </button>
+          <button (click)="endCall()" class="danger">
+            <i class="material-icons">call_end</i> End Call
+          </button>
+        </ng-container>
+
+        <!-- Interviewer controls -->
+        <ng-container *ngIf="role === 'interviewer'">
+          <button (click)="startRecording()" [disabled]="isRecording">
+            <i class="material-icons">fiber_manual_record</i>
+            Start Recording
+          </button>
+          <button (click)="stopRecordingAndUpload()" [disabled]="!isRecording" class="stop-button">
+            <i class="material-icons">stop_circle</i>
+            Stop & Upload
+          </button>
+          <button (click)="endCall()" class="danger">
+            <i class="material-icons">call_end</i> End Call
+          </button>
+        </ng-container>
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+
+      <!-- Live Events -->
+      <div class="card events-card" *ngIf="role === 'interviewer'">
+        <h4><i class="material-icons">event_note</i> Live Events</h4>
+        <div class="events-list">
+          <div *ngFor="let ev of events" class="event-item">
+            <div class="event-header">
+              <i class="material-icons">{{ getIconForEventType(ev.type) }}</i>
+              <b>{{ ev.type }}</b>
+              <span class="timestamp">{{ ev.timestamp | date:'shortTime' }}</span>
+            </div>
+            <div class="event-detail">
+              <span class="small">{{ ev.role }} — {{ ev.name }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chat -->
+      <div class="card chat-card">
+        <h4><i class="material-icons">chat_bubble</i> Room Chat</h4>
+        <div class="chat-history" #chatHistory>
+          <div *ngFor="let m of chatMessages" class="chat-message" [class.self]="m.self">
+            <div class="message-bubble">
+              <div class="message-sender" *ngIf="!m.self">{{ m.name }}</div>
+              <div class="message-content">{{ m.message }}</div>
+              <div class="message-timestamp">{{ m.timestamp | date:'HH:mm' }}</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="chat-input-area">
+          <input [(ngModel)]="chatText" (keyup.enter)="sendChat()" placeholder="Type a message..." />
+          <button (click)="sendChat()" [disabled]="!chatText.trim()">
+            <i class="material-icons">send</i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

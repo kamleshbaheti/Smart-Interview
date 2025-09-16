@@ -1,0 +1,17 @@
+<div class="card" style="max-width: 600px; margin: 20px auto; padding: 24px;">
+  <h3 class="section-title">Join Interview</h3>
+  
+  <div class="input-group">
+    <label class="small">Your Name</label>
+    <input [(ngModel)]="name" placeholder="Your full name" />
+  </div>
+  
+  <div class="input-group" style="margin-top: 12px;">
+    <label class="small">Session ID</label> 
+    <input [(ngModel)]="sessionId" placeholder="Paste session ID given by interviewer" />
+  </div>
+  
+  <div style="margin-top: 16px;">
+    <button (click)="join()" class="primary-btn">Join Interview</button>
+  </div>
+</div>

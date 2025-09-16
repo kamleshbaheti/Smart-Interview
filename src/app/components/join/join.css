@@ -1,0 +1,100 @@
+/* Styling for the card container */
+.card {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 24px;
+  background-color: #fff;
+  border-radius: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Section title for the form */
+.section-title {
+  margin-top: 0px;
+  margin-bottom: 16px;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Small label text style */
+.small {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin-bottom: 6px;
+}
+
+/* Grouping the inputs */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Styling for input fields */
+input {
+  padding: 1rem;
+  width: 94%;
+  border-radius: 2rem;
+  border: 1px solid #d1d5db;
+  font-size: 1rem;
+  color: #333;
+  background-color: #f9fafb;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+/* Button styling */
+button.primary-btn {
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 2rem;
+  cursor: pointer;
+  background-color: #007bff;
+  color: #fff;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+button.primary-btn:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+button.primary-btn:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .card {
+    padding: 16px;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .small {
+    font-size: 0.8rem;
+  }
+
+  input {
+    padding: 10px 14px;
+    font-size: 1rem;
+  }
+
+  button.primary-btn {
+    width: 100%;
+    font-size: 1rem;
+  }
+}

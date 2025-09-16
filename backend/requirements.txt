@@ -1,0 +1,8 @@
+Flask
+flask-socketio
+python-socketio
+eventlet
+sqlalchemy
+flask-cors
+reportlab
+pillow

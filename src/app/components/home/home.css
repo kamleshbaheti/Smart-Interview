@@ -1,0 +1,133 @@
+/* Styling for the card */
+.card {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 24px;
+    background-color: #fff;
+    border-radius: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Section Title */
+.section-title {
+    margin-top: 0px;
+    margin-bottom: 16px;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Sub-title for the Created Sessions section */
+.sub-title {
+    margin-bottom: 12px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #555;
+}
+
+/* Styling for the small text (e.g., No sessions yet) */
+.small {
+    color: #6b7280;
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
+/* Flex container for buttons */
+button {
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+button.primary-btn {
+    background-color: #007bff;
+    color: #fff;
+}
+
+button.secondary-btn {
+    background-color: #f0f0f0;
+    color: #007bff;
+    border: 1px solid #007bff;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+button.primary-btn:hover {
+    background-color: #0056b3;
+}
+
+button.secondary-btn:hover {
+    background-color: #e0e0e0;
+}
+
+/* List of sessions */
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.session-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.session-item:last-child {
+    border-bottom: none;
+}
+
+.session-item button {
+    margin-left: 12px;
+    background-color: #007bff;
+    color: #fff;
+}
+
+.session-item button:hover {
+    background-color: #0056b3;
+}
+
+/* Flex styling for buttons */
+div[style*="display: flex"] {
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+}
+
+@media (max-width: 768px) {
+    .card {
+        padding: 16px;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    .sub-title {
+        font-size: 1.1rem;
+    }
+
+    button {
+        width: 100%;
+        margin-bottom: 12px;
+    }
+
+    ul {
+        padding-left: 0;
+    }
+}
